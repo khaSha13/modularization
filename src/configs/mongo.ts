@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI || "";
+const MONGO_URI = process.env['MONGO_URI'] || "";
 
 mongoose
     .connect(MONGO_URI, {})
@@ -11,4 +11,6 @@ const jobSchema = new mongoose.Schema({}, { strict: false });
 
 const Job = mongoose.model("Job", jobSchema);
 
-module.exports = { Job };
+export {
+    Job
+};

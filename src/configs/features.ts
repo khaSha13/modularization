@@ -1,10 +1,12 @@
 const envs = process.env;
 const featuresList = [];
 
-const CONCURRENCY = parseInt(process.env.CONCURRENCY) || 1;
+const ENV_CONCURRENCY = process.env['CONCURRENCY'] || "";
+
+const CONCURRENCY = parseInt(ENV_CONCURRENCY) || 1;
 
 for (const [name, value] of Object.entries(envs)) {
-    
+
     if (name.includes('_Queue') && value == 'true') {
         featuresList.push({
             name,
@@ -13,6 +15,6 @@ for (const [name, value] of Object.entries(envs)) {
     }
 }
 
-module.exports = {
+export {
     featuresList
-};
+}
